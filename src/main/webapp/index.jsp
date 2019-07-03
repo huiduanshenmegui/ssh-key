@@ -15,7 +15,7 @@
 		<head></head>
 
 		<body id="bg">
-			<iframe src="iframe_b.html" name="iframe_a" align="right" width="1686px" height="969" frameborder="0"></iframe>
+			<iframe src="iframe_b.jsp" name="iframe_a" align="right" width="1686px" height="969" frameborder="0"></iframe>
 
 			<!-- 左边节点 -->
 			<div class="container">
@@ -30,7 +30,7 @@
 				</dt>
 						<dd>
 							
-							<a href="lizi.html#a" target="iframe_a">购车意向表</a>
+							<a href="lizi.jsp#a" target="iframe_a">购车意向表</a>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
 							
 
@@ -38,7 +38,7 @@
 						<dd>
 							
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-							<a href="precontract.html#all" target="iframe_a">预约车列表</a>
+							<a href="precontract.jsp#all" target="iframe_a">预约车列表</a>
 						</dd>
 					</dl>
 					<dl class="system_log">
@@ -50,7 +50,7 @@
 				</dt>
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-							<a class="cks" href="index.html" target="main">主页滑动管理</a><img class="icon5" src="img/coin21.png" />
+							<a class="cks" href="index.jsp" target="main">主页滑动管理</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 					</dl>
 					<dl class="system_log">
@@ -62,7 +62,7 @@
 				</dt>
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-							<a href="tab.html" target="iframe_a">入库</a><img class="icon5" src="img/coin21.png" />
+							<a href="tab.jsp" target="iframe_a">入库</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 
 					</dl>
@@ -76,7 +76,7 @@
 				</dt>
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-							<a href="user.html" target="iframe_a">员工管理</a><img class="icon5" src="img/coin21.png" />
+							<a href="user.jsp" target="iframe_a">员工管理</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 					</dl>
 					<dl class="system_log">
@@ -88,7 +88,7 @@
 				</dt>
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-							<a href="indent.html" target="iframe_a">收支管理</a><img class="icon5" src="img/coin21.png" />
+							<a href="indent.jsp" target="iframe_a">收支管理</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 					</dl>
 					<dl class="system_log">
@@ -100,14 +100,17 @@
 				</dt>
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-							<a href="changepwd.html" target="iframe_a">修改密码</a><img class="icon5" src="img/coin21.png" />
+							<a href="changepwd.jsp" target="iframe_a">修改密码</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
 							<a class="cks">退出</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 					</dl>
-
+                      <div id="admin_bar">
+  <div id="status">管理员： 登录  &#160;&#160;&#160;&#160; <a href="#">login out</a></div>
+  <div id="channel"> </div>
+</div>
 				</div>
 
 			</div>
