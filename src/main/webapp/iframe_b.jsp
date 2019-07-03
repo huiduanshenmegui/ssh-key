@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="img/timg.gif" width="300" height="400" />
+		<img src="img/rumen.jpeg" width="300" height="400" />
+		<img src="img-1/1.jpg" width="300" height="400"/>
+		<img src="img-1/2.jpg" width="300" height="400"/>
+		<img src="img-1/3.jpg" width="300" height="400"/>
+		<br />
+		<img src="img-1/4.jpg" width="300" height="400"/>
+		<img src="img-1/5.jpg" width="300" height="400"/>
+		<img src="img-1/6.jpg" width="300" height="400"/>
+		<img src="img-1/7.jpg" width="300" height="400"/>
+		<img src="img-1/8.jpg" width="300" height="400"/>
+	</body>
+</html>
