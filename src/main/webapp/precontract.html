@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title></title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name="generator" content="" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+		<link href="css/haiersoft.css" rel="stylesheet" type="text/css" media="screen,print" />
+		<link href="css/print.css" rel="stylesheet" type="text/css" media="print" />
+		<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/side.js" type="text/javascript"></script>
+
+		<head>
+			<meta charset="utf-8" />
+			<title>车辆预约信息管理列表</title>
+			<style>
+				.pageTop {
+					float: left;
+				}
+				/*浮动 */
+				
+				#box_center {
+					float: left;
+				}
+				
+				#box_bottom {
+					float: right;
+				}
+				/*设置表格的总体样式 */
+				
+				#recruit {
+					width: 100%;
+					border-collapse: collapse;
+					text-align: left;
+				}
+				/* 设置单元格样式*/
+				
+				#recruit td,
+				#recruit th {
+					border: 1px solid white;
+					padding: 7px;
+				}
+				/* 设置标题单元格样式 */
+				
+				#recruit th {
+					background-color: white;
+					color: #white;
+				}
+				/* 设置单元行样式 */
+				
+				#recruit tr.orange {
+					background-color: white;
+				}
+				/*浮动 */
+				
+				.ui_flt {
+					float: left;
+				}
+				
+				.ui_frt {
+					float: right;
+				}
+				/* 文字颜色 */
+				
+				#jumpNumTxt {
+					color: white;
+				}
+			</style>
+		</head>
+		<div id="pageAll">
+			<div class="pageTop">
+				<div class="page">
+					<img src="img/coin02.png" /><span>首页&nbsp;-&nbsp;-</span>&nbsp;用户管理
+				</div>
+			</div>
+
+			<body style="text-align: center;"><br />
+
+				<table id="recruit" border="1" style="text-align: center;">
+					<div class="ui_text_indent">
+						<div id="box_border">
+							<div id="box_top">
+								<h1>车辆预约信息管理</h1></div>
+							<div id="box_center">
+								预约时间:年
+								<select name="fangyuanEntity.fyXqCode" id="fyXq" class="ui_select01" onchange="getFyDhListByFyXqCode();">
+									<option value="">--请选择--</option>
+									<option value="6">2019年</option>
+									<option value="77">2020年</option>
+									<option value="83">2021年</option>
+								</select>
+
+								月
+								<select name="fangyuanEntity.fyDhCode" id="fyDh" class="ui_select01">
+									<option value="">--请选择--</option>
+									<option value="76">1月</option>
+									<option value="10">2月</option>
+									<option value="14">3月</option>
+									<option value="71">5月</option>
+									<option value="71">6月</option>
+									<option value="71">7月</option>
+									<option value="71">8月</option>
+									<option value="71">9月</option>
+									<option value="71">10月</option>
+									<option value="71">11月</option>
+									<option value="71">12月</option>
+								</select>
+								日
+								<select name="fangyuanEntity.fyHxCode" id="fyHx" class="ui_select01">
+									<option value="">--请选择--</option>
+									<option value="76">1日</option>
+									<option value="10">2日</option>
+									<option value="14">3日</option>
+									<option value="71">5日</option>
+									<option value="71">6日</option>
+									<option value="71">7日</option>
+									<option value="71">8日</option>
+									<option value="71">9日</option>
+									<option value="71">10日</option>
+									<option value="71">11日</option>
+									<option value="71">12日</option>
+									<option value="71">13日</option>
+									<option value="71">14日</option>
+									<option value="71">15日</option>
+									<option value="71">16日</option>
+									<option value="71">17日</option>
+									<option value="71">18日</option>
+									<option value="71">19日</option>
+									<option value="71">20日</option>
+									<option value="71">21日</option>
+									<option value="71">22日</option>
+									<option value="71">23日</option>
+									<option value="71">24日</option>
+									<option value="71">25日</option>
+									<option value="71">26日</option>
+									<option value="71">27日</option>
+									<option value="71">28日</option>
+									<option value="71">29日</option>
+									<option value="71">30日</option>
+									<option value="71">31日</option>
+								</select>
+								状态
+								<select name="fangyuanEntity.fyStatus" id="fyStatus" class="ui_select01">
+									<option value="">--请选择--</option>
+									<option value="26">已通过</option>
+									<option value="25">未通过</option>
+								</select>
+
+								查询&nbsp;&nbsp;<input type="text" id="fyZldz" name="fangyuanEntity.fyZldz" class="ui_input_txt02" />
+								<hr />
+							</div>
+							<div id="box_bottom">
+								<input type="button" value="查询" class="ui_input_btn01" onclick="search();" />
+								<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" />
+								<input type="button" value="全部同意" class="ui_input_btn01" id="importBtn" />
+								
+								<hr />
+							</div>
+						</div>
+					</div>
+		</div>
+		<tr>
+			<th>序号</th>
+			<th>用户名</th>
+			<th>性别</th>
+			<th>联系方式</th>
+			<th>预算</th>
+			<th>预约车辆</th>
+			<th>预约时间</th>
+			<th>状态</th>
+			<th>操作</th>
+			<div class="bgcc" style="float:right">
+				<td><input type="checkbox" id="cb_quanxuan" onclick="quanxuan()" />全选</td>
+			</div>
+
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>11</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+		<tr>
+			<td>12</td>
+			<td>向红</td>
+			<td>女</td>
+			<td>15000000000</td>
+			<td>10万</td>
+			<td>奥迪A8</td>
+			<td>2018-11-11上午8:00</td>
+			<td>待处理</td>
+			<td>
+
+				<input type="button" value="同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认同意该用户试车吗？")
+					}
+				</script>
+				&nbsp;&nbsp;&nbsp;
+				<input type="button" value="不同意" onclick="MsgBox()"></input>
+				<script language="JavaScript">
+					function MsgBox() {
+						alert("确认取消该用户的试车请求吗？")
+					}
+				</script>
+			</td>
+
+			<td width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
+			</td>
+		</tr>
+
+		</table>
+		<div class="ui_frt"><hr />
+
+			<!--     如果是最后一页，则只显示首页、上一页 -->
+
+			转到第<input type="text" id="jumpNumTxt" class="ui_input_txt01" />页
+			<input type="button" class="ui_input_btn01" value="跳转" onclick="jumpInputPage(9);" />
+		</div>
+
+		<div class="ui_tb_h30">
+			<div class="ui_flt" style="height: 30px; line-height: 30px;">
+				<hr /> 共有
+				<span class="ui_txt_bold04">90</span> 条记录，当前第
+				<span class="ui_txt_bold04">1
+						/
+						9</span> 页
+			</div>
+
+			<ul id="PageNum" style="text-align: center;">
+				<li>
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">上一页</a>
+				</li>
+				<li>
+					<a href="#">1</a>
+				</li>
+				<li>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">5</a>
+				</li>
+				<li>
+					<a href="#">6</a>
+				</li>
+				<li>
+					<a href="#">下一页</a>
+				</li>
+				<li>
+					<a href="#">尾页</a>
+				</li>
+			</ul>
+
+		</div>
+		</div>
+		</div>
+		</form>
+
+		</body>
+
+</html>
